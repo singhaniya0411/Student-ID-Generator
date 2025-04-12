@@ -107,9 +107,9 @@ export default function StudentForm({ setStudentData }) {
       busRoute,
     } = form;
 
-    console.log(name, rollNumber, classDivision, rackNumber, busRoute);
+    // console.log(name, rollNumber, classDivision, rackNumber, busRoute);
 
-    console.log("Form Submitted");
+    // console.log("Form Submitted");
 
     // Form validation
     if (!name || !rollNumber || !classDivision || !rackNumber || !busRoute) {
@@ -127,7 +127,7 @@ export default function StudentForm({ setStudentData }) {
       busRoute,
     };
 
-    console.log("Saving to localStorage:", newCard);
+    // console.log("Saving to localStorage:", newCard);
 
     // Get existing cards from localStorage
     const existingCards =
@@ -139,7 +139,7 @@ export default function StudentForm({ setStudentData }) {
     // Save updated cards to localStorage
     localStorage.setItem("studentCards", JSON.stringify(updatedCards));
 
-    console.log("Saved cards:", updatedCards);
+    // console.log("Saved cards:", updatedCards);
   };
 
   const existingCards = JSON.parse(localStorage.getItem("studentCards")) || [];
