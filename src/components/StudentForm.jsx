@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const allergyOption = [
   "Pollen",
@@ -88,7 +89,9 @@ export default function StudentForm({ setStudentData }) {
 
   const handlePhotoUpload = async (e) => {
     const file = e.target.files[0];
-    if (!file) return alert("No file");
+    if (!file) {
+      toast.error("No file attatched!");
+    }
 
     const resizedPhoto = await resizeImage(file);
     setForm((prev) => ({ ...prev, photo: resizedPhoto }));
@@ -107,13 +110,8 @@ export default function StudentForm({ setStudentData }) {
       busRoute,
     } = form;
 
-    // console.log(name, rollNumber, classDivision, rackNumber, busRoute);
-
-    // console.log("Form Submitted");
-
-    // Form validation
     if (!name || !rollNumber || !classDivision || !rackNumber || !busRoute) {
-      alert("Please fill all the required fields!");
+      toast.error("All fields are required!");
       return;
     }
 
@@ -137,7 +135,16 @@ export default function StudentForm({ setStudentData }) {
     const updatedCards = [...existingCards, newCard];
 
     // Save updated cards to localStorage
-    localStorage.setItem("studentCards", JSON.stringify(updatedCards));
+    try {
+      localStorage.setItem("studentCards", JSON.stringify(updatedCards));
+      toast.success("ID Card Generated Successfully");
+
+      setTimeout(() => {
+        window.location.reload(); // Refresh the page
+      }, 4000);
+    } catch (error) {
+      toast.error("ID Card Request Failed! Please try again");
+    }
 
     // console.log("Saved cards:", updatedCards);
   };

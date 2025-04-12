@@ -2,7 +2,10 @@ import { useState } from "react";
 import "./App.css";
 import StudentForm from "./components/StudentForm";
 import IDCardPreview from "./components/IDCardPreview";
+import { ToastContainer } from "react-toastify";
 import SavedCards from "./components/SavedCard";
+
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const [showSaved, setShowSaved] = useState(false);
@@ -11,6 +14,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
+      <ToastContainer position="top-right" autoClose={3000} />
       <h1 className="text-2xl font-semibold text-center mb-3">
         Student ID Generator
       </h1>
