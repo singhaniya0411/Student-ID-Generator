@@ -110,7 +110,14 @@ export default function StudentForm({ setStudentData }) {
       busRoute,
     } = form;
 
-    if (!name || !rollNumber || !classDivision || !rackNumber || !busRoute) {
+    if (
+      !name ||
+      !rollNumber ||
+      !classDivision ||
+      !rackNumber ||
+      !busRoute ||
+      !photo
+    ) {
       toast.error("All fields are required!");
       return;
     }
